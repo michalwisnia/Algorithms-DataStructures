@@ -1,0 +1,50 @@
+type Node
+{
+    value;
+    Node* next;
+}
+
+Node* first = nullptr;
+
+insert(value)
+{
+    jesli first == nullptr
+    {
+	first = new Node {Node.value = value, Node.next = nullptr};
+    }
+    inaczej
+    {
+	jesli value > first.value
+        { 
+	     first = new Node {Node.value = value, Node.next = first};
+	}
+	inaczej 
+	{
+	    Node* i = first;
+	    dopoki i.next != nullptr oraz value <= i.next.value
+	    {
+		i = i.next;
+	    }
+	    i.next = new Node {Node.value = value, Node.next = i.next};
+	}
+    }
+}
+
+deleteFirst()
+{
+    Node* foo = first;
+    first = first.next;
+    zwolnij pamiec na foo;
+}
+
+search()
+{
+    Node* i = first;
+    index = 0;
+    dopoki i.next != nullptr oraz i.value != value
+    {
+	i = i.next;
+        index = index + 1;
+    }
+    zwroc index;
+}
